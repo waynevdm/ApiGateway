@@ -23,7 +23,6 @@ namespace AuthenticationTests.Integration
             // Get no authorization
             var client = new RestClient(apiBaseUrl);
             var getAccountReq = new RestRequest("/api/Account/35456");
-            getAccountReq.AddHeader("Authorization", $"Bearer {tokenResp.AccessToken}");
             var accountResponse = client.Get<Account>(getAccountReq);
             Assert.IsNotNull(accountResponse);
             Assert.AreEqual(accountResponse.StatusCode, HttpStatusCode.OK);
